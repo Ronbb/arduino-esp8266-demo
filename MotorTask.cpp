@@ -8,6 +8,7 @@ void MotorTask::setup()
 void MotorTask::loop()
 {
     spin();
+    delay(1);
 }
 
 void MotorTask::configMotor()
@@ -20,6 +21,11 @@ void MotorTask::configMotor()
 
 void MotorTask::spin()
 {
+    if (!_isSpinning)
+    {
+        return;
+    }
+    
     if (!_isReverse)
     {
         for (auto &&i : _motorPins)
