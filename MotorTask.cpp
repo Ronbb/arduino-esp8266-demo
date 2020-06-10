@@ -25,7 +25,7 @@ void MotorTask::spin()
     {
         return;
     }
-    
+
     if (!_isReverse)
     {
         for (auto &&i : _motorPins)

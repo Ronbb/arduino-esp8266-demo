@@ -1,10 +1,12 @@
 #include "SensorTask.h"
 
-void SensorTask::setup() {
+void SensorTask::setup()
+{
     configSensor();
 }
 
-void SensorTask::loop() {
+void SensorTask::loop()
+{
     delay(1000);
 }
 
