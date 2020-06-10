@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/ronbb/Documents/Arduino/libraries/ESP8266Scheduler/src",
+                "/Users/ronbb/Documents/Arduino/libraries/ESP8266Audio-master/src",
+                "/Users/ronbb/Documents/Arduino/libraries/SCoop",
+                "/Users/ronbb/Library/Arduino15/packages/esp8266/tools/**",
+                "/Users/ronbb/Library/Arduino15/packages/esp8266/hardware/esp8266/2.7.1/**"
+            ],
+            "forcedInclude": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
