@@ -4,5 +4,5 @@
 void HeartbeatTask::loop()
 {
     Serial.printf("[Heartbeat] %u\n", millis() / 1000); // seconds
-    delay(10000);                                       // milliseconds
+    delay(1000);                                       // milliseconds
 }

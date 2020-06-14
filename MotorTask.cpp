@@ -7,8 +7,12 @@ void MotorTask::setup()
 
 void MotorTask::loop()
 {
+    if (!_isSpinning)
+    {
+        delay(10);
+        return;
+    }
     spin();
-    delay(1);
 }
 
 void MotorTask::configMotor()
@@ -17,14 +21,13 @@ void MotorTask::configMotor()
     {
         pinMode(i, OUTPUT);
     }
+    pinMode(_motorSelPin, OUTPUT);
+    digitalWrite(_motorSelPin, HIGH);
 }
 
 void MotorTask::spin()
 {
-    if (!_isSpinning)
-    {
-        return;
-    }
+    // digitalWrite(_motorSelPin, _currentMotor == 1 ? HIGH : LOW);
 
     if (!_isReverse)
     {
@@ -46,10 +49,12 @@ void MotorTask::spin()
     }
 }
 
-void MotorTask::start(bool reverse)
+void MotorTask::start(int motor, bool reverse)
 {
     _isReverse = reverse;
     _isSpinning = true;
+    _currentMotor = motor;
+    Serial.println(motor);
 }
 
 void MotorTask::stop()
