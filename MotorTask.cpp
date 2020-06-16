@@ -23,30 +23,34 @@ void MotorTask::loop()
     if (_isSpinning)
     {
 
-        if(_currentMotor == 0)
+        if (_currentMotor == 0)
         {
+            digitalWrite(_motorSelPin, LOW);
+            delay(100);
             int count = 64 * 2;
-            while (count -- > 0)
+            while (count-- > 0)
             {
                 spin(false);
             }
             delay(2000);
             count = 64 * 2;
-            while (count -- > 0)
+            while (count-- > 0)
             {
                 spin(true);
             }
         }
         else
         {
+            write
+            delay(100);
             int count = 64 * 8 * 3;
-            while (count -- > 0)
+            while (count-- > 0)
             {
                 spin(false);
             }
             _mcb();
         }
-        
+
         _isSpinning = false;
         _willRun = false;
     }

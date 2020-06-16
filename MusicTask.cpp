@@ -4,7 +4,7 @@
 void MDCallback(void *cbData, const char *type, bool isUnicode, const char *string)
 {
     (void)cbData;
-    Serial.printf("ID3 callback for: %s = '", type);
+    //Serial.printf("ID3 callback for: %s = '", type);
 
     if (isUnicode)
     {
@@ -18,15 +18,15 @@ void MDCallback(void *cbData, const char *type, bool isUnicode, const char *stri
         {
             string++;
         }
-        Serial.printf("%c", a);
+        //Serial.printf("%c", a);
     }
-    Serial.printf("'\n");
-    Serial.flush();
+    //Serial.printf("'\n");
+    //Serial.flush();
 }
 
 void MusicTask::setup()
 {
-    audioLogger = &Serial;
+    // audioLogger = &Serial;
     _filenames = {"/0.wav", "/1.wav", "/2.wav"};
     _willRun = false;
 
@@ -59,7 +59,7 @@ void MusicTask::loop()
         // }
         // else
         // {
-        //     delay(100);
+            delay(100);
         // }
     }
 }
@@ -78,7 +78,7 @@ void MusicTask::Run()
     _id3 = new AudioFileSourceID3(_file);
     _mp3->begin(_id3, _out);
 
-    Serial.println(fileName);
+    //Serial.println(fileName);
 
     while (true)
     {

@@ -18,7 +18,7 @@
         12, 5, 14, 4 \
     }
 
-#define MOTOR_SEL 16
+#define MOTOR_SEL 1
 
 void ICACHE_RAM_ATTR sensorISR_0();
 void ICACHE_RAM_ATTR sensorISR_1();
@@ -47,8 +47,8 @@ void ICACHE_RAM_ATTR sensorISR_1()
 
 void setup()
 {
-    Serial.begin(115200);
-    Serial.println("Main Setup");
+    //Serial.begin(115200);
+    //Serial.println("Main Setup");
 
     delay(1000);
 
