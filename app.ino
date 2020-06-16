@@ -7,17 +7,15 @@
 #include "MotorTask.h"
 #include "HeartbeatTask.h"
 #include "SensorTask.h"
+#include "MusicTask.h"
 
-#include "AudioFileSourceSPIFFS.h"
-#include "AudioGeneratorMP3.h"
-#include "AudioOutputI2SNoDAC.h"
 
 #define SENSOR_0 13
-#define SENSOR_1 10
+#define SENSOR_1 15
 
 #define MOTOR       \
     {                 \
-        12, 15, 14, 4 \
+        12, 5, 14, 4 \
     }
 
 #define MOTOR_SEL 16
@@ -25,10 +23,17 @@
 void ICACHE_RAM_ATTR sensorISR_0();
 void ICACHE_RAM_ATTR sensorISR_1();
 
+void mcb();
+
 auto heartbeat_task = new HeartbeatTask();
-auto motor_task = new MotorTask(MOTOR, MOTOR_SEL);
+auto motor_task = new MotorTask(MOTOR, MOTOR_SEL, mcb);
 auto sensor_task0 = new SensorTask(SENSOR_0, sensorISR_0);
 auto sensor_task1 = new SensorTask(SENSOR_1, sensorISR_1);
+auto music_task = new MusicTask();
+
+void mcb() {
+    music_task->Run();
+}
 
 void ICACHE_RAM_ATTR sensorISR_0()
 {
@@ -51,7 +56,7 @@ void setup()
     Scheduler.start(motor_task);
     Scheduler.start(sensor_task0);
     Scheduler.start(sensor_task1);
-
+    Scheduler.start(music_task);
     Scheduler.begin();
 }
 
