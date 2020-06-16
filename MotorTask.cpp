@@ -25,23 +25,27 @@ void MotorTask::loop()
 
         if (_currentMotor == 0)
         {
-            digitalWrite(_motorSelPin, LOW);
+            pinMode(_motorSelPin, OUTPUT);
+            digitalWrite(_motorSelPin, HIGH);
+
             delay(100);
             int count = 64 * 2;
             while (count-- > 0)
             {
-                spin(false);
+                spin(true);
             }
             delay(2000);
             count = 64 * 2;
             while (count-- > 0)
             {
-                spin(true);
+                spin(false);
             }
         }
         else
         {
-            write
+            pinMode(_motorSelPin, OUTPUT);
+            digitalWrite(_motorSelPin, LOW);
+
             delay(100);
             int count = 64 * 8 * 3;
             while (count-- > 0)
